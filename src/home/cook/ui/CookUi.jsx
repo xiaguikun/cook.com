@@ -1,5 +1,7 @@
 import React from 'react';
 
+import {array,string} from 'prop-types';
+
 import {Container,DivLine} from '../ui/StyledComponents.js';
 import Grid from './Grid';
 import Menu from './Menu';
@@ -20,6 +22,11 @@ const CookUi = (props) => {
             </Container>
         </>
     );
+}
+
+CookUi.propTypes={
+    bannerList:array,
+    bannerPrefix:string
 }
 
 export default CookUi;

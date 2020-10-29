@@ -12,5 +12,9 @@
     4.在组件内用的时候，从react-redux中引入connect，接收两个参数mapStateToProps=(state)=>{}  mapDispatchToProps=(dispatch)=>{}
     5.模块化redux：在组件内的文件夹中建立术语自己的reducer，actionCreater，然后将reducer暴露出来，在store文件中的reducer中引入reducer然后引入combineReducers从redux中，然后合并各个组件的reducer然后暴露出总的reducer
 
+### prop-types
+    1. 安装 prop-types 
+    2. 在需要判断的组件中(检测的是父组件传下来的props中的数据)，引入{string,array} from 'prop-types' 在下面组件名.propTypes={数据1：string}
+
 
 
