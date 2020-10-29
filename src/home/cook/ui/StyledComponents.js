@@ -97,9 +97,54 @@ const DivMenu=styled.div`
     }
 `
 
+const DivRecommed=styled.div`
+    width:100%;
+    nav{
+        display:flex;
+        margin-top:30px;
+        font-size:16px;
+        box-sizing:border-box;
+        padding:0 15px;
+        li{
+            list-style:none;
+            width: 80px;
+            height: 30px;
+            text-align:center;
+            line-height:30px;
+            color:#AAA;
+        }
+        .active{
+            color:black;
+            font-size:18px;
+            font-weight:550;
+        }
+    }
+    section{
+        box-sizing:border-box;
+        padding:0 10px;
+        display:flex;
+        flex-wrap:wrap;
+        justify-content:space-between;
+        margin-top:15px;
+        >div{
+            width:45%;
+            img{
+                width:100%;
+                height: 100px;
+            }
+            p{
+                font-size:14px;
+                color:black;
+                font-weight:550;
+            }
+        }
+    }
+`
+
 export {
     Container,
     SwiperStyle,
     DivLine,
-    DivMenu
+    DivMenu,
+    DivRecommed
 }

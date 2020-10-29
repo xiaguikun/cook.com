@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import Cooks from '../ui/CookUi';
 import {connect} from 'react-redux';
-import {getBannerList,getMenuList} from '../actionCreator';
+import {getBannerList,getMenuList,getRecommendList} from '../actionCreator';
 
 
 const mapStateToProps=(state)=>{
@@ -11,7 +11,9 @@ const mapStateToProps=(state)=>{
         bannerList:state.cookReducer.bannerList,
         bannerPrefix:state.cookReducer.bannerPrefix,
         menuList:state.cookReducer.menuList,
-        menuPrefix:state.cookReducer.menuPrefix
+        menuPrefix:state.cookReducer.menuPrefix,
+        recommendList:state.cookReducer.recommendList,
+        recommendUrlPrefix:state.cookReducer.recommendUrlPrefix
     }
 }
 const mapDispatchToProps=(dispatch)=>{
@@ -22,6 +24,9 @@ const mapDispatchToProps=(dispatch)=>{
         },
         getMenu(){
             dispatch(getMenuList())
+        },
+        getRecommend(){
+            dispatch(getRecommendList())
         }
     }
 }
@@ -37,6 +42,8 @@ class Cook extends Component {
     componentDidMount(){
         this.props.getBanner();
         this.props.getMenu();
+        this.props.getRecommend();
+        
     }
 }
 

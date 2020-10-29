@@ -1,9 +1,11 @@
 import { combineReducers } from 'redux';
 
 import {reducer as cookReducer} from '../home/cook/reducer';
+import {reducer as messageReducer} from '../home/message/reducer';
 
 const reducer=combineReducers({
-    cookReducer
+    cookReducer,
+    messageReducer
 })
 
 export default reducer;

@@ -23,6 +23,7 @@ class Menu extends Component {
             <DivMenu>
                <div className="title">菜谱</div>
                 <Grid data={this.props.menuList}
+                activeStyle={false}
                 columnNum={2}
                 renderItem={dataItem => (
                    <div className='box' key={dataItem.id}>

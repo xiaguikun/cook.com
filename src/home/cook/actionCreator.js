@@ -1,8 +1,13 @@
-import { getBanner,getMenu} from '@utils/api';
+import { getBanner,getMenu,getRecommend} from '@utils/api';
+
+import {
+    COOKS_GET_BANNER_DATA,
+    COOKS_GET_MENU_DATA
+} from './actionTypes';
 
 const getBannerDate=(data)=>{
     return {
-        type:'getBanner',
+        type:COOKS_GET_BANNER_DATA,
         bannerPrefix:data.prefix,
         bannerList:data.result
     }
@@ -18,7 +23,7 @@ const getBannerList=()=>{
 
 const getMenuData=(data)=>{
     return {
-        type:'getMenu',
+        type:COOKS_GET_MENU_DATA,
         menuPrefix:data.prefix,
         menuList:data.result
         
@@ -33,8 +38,26 @@ const getMenuList=()=>{
     }
 }
 
+
+const getRecommendData=(data)=>{
+    return {
+        type:'getRecommendData',
+        recommendList:data.result,
+        recommendUrlPrefix:data.prefix
+    }
+}
+
+const getRecommendList=()=>{
+    return async (dispatch)=>{
+        const res =await getRecommend();
+        // console.log(res);
+        dispatch(getRecommendData(res.data))
+    }
+}
+
 export {
     getBannerDate,
     getBannerList,
-    getMenuList
+    getMenuList,
+    getRecommendList
 }

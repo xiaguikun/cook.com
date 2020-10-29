@@ -1,9 +1,10 @@
 import React from 'react';
 
 import {Container,DivLine} from '../ui/StyledComponents.js';
-import Grid from '../ui/Grid';
-import Menu from '../ui/Menu';
-import Swiper from '../ui/Swiper';
+import Grid from './Grid';
+import Menu from './Menu';
+import Swiper from './Swiper';
+import Recommed from './recommed';
 
 const CookUi = (props) => {
     // console.log(props);
@@ -11,12 +12,11 @@ const CookUi = (props) => {
         <>
             <Container>
                 <header>菜谱大全</header>
-                {/* <Swiper ></Swiper> */}
                 <Swiper bannerList={props.bannerList} bannerPrefix={props.bannerPrefix}></Swiper>
                 <Grid></Grid>
                 <DivLine></DivLine>
-                {/* <Menu ></Menu> */}
                 <Menu menuList={props.menuList} menuPrefix={props.menuPrefix}></Menu>
+                <Recommed recommendList={props.recommendList}  recommendUrlPrefix={props.recommendUrlPrefix}></Recommed>
             </Container>
         </>
     );

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import {Cook} from './cook/index';
+import {Message} from './message/index';
 
 import { TabBar } from 'antd-mobile';
 
@@ -106,7 +107,7 @@ class Home extends Component {
                         }}
                     >
                         {/* {this.renderContent('Friend')} */}
-                        <div>message</div>
+                        <Message></Message>
                     </TabBar.Item>
                     <TabBar.Item
                         icon={{ uri: mineImg }}
