@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import {Grid} from 'antd-mobile';
 
-import {DivMenu} from './StyledComponents';
+import {DivMenu,DivItem} from './StyledComponents';
 
 
 
@@ -31,8 +31,10 @@ class Menu extends Component {
                             <img src={this.props.menuPrefix+dataItem.url}  alt="" />
                         </div>
                         <div className='itemBox'>
-                            <p className={'p'+dataItem.id}>{dataItem.title}</p>
-                            <p className={'p'+dataItem.id}>{dataItem.content}</p>
+                            <DivItem color={dataItem.bgColor}>
+                                <p>{dataItem.title}</p>
+                                <p>{dataItem.content}</p>
+                            </DivItem>
                         </div>
                    </div>
                 )}

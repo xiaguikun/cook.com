@@ -8,11 +8,11 @@ class recommed extends Component {
    }
 
    filter=memoize(
-     (list,type)=>{
-        return list.filter(item=>{
-          return item.type===type
-        })
-   }
+        (list,type)=>{
+              return list.filter(item=>{
+                return item.type===type
+              })
+        }
    )
   handleClick=(num)=>()=>{
     this.setState({
@@ -20,9 +20,9 @@ class recommed extends Component {
     })
   }
   render() {
-    console.log(this.props);
+    // console.log(this.props);
     const filterList=this.filter(this.props.recommendList,this.state.type)
-    console.log(filterList);
+    // console.log(filterList);
     return (
       <DivRecommed>
           <nav>

@@ -81,19 +81,13 @@ const DivMenu=styled.div`
             p:last-child{
                 font-size:12px;
             }
-            .p1{
-                color:red
-            }
-            .p2{
-                color:#21C072
-            }
-            .p3{
-                color:#9D15D4
-            }
-            .p4{
-                color:#F703B6
-            }
         }
+    }
+`
+
+const DivItem =styled.div`
+    p{
+        color:${props=>props.color}
     }
 `
 
@@ -146,5 +140,6 @@ export {
     SwiperStyle,
     DivLine,
     DivMenu,
-    DivRecommed
+    DivRecommed,
+    DivItem
 }
