@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 
+import {connect} from 'react-redux';
 import {Cook} from './cook/index';
 import {Message} from './message/index';
 
 import { TabBar } from 'antd-mobile';
+import {changeTabData} from './actionCreator';
 
 import cookImg from '@img/img11.jpg';
 import cookActiveImg from '@img/img1.jpg';
@@ -14,13 +16,30 @@ import messageActiveImg from '@img/img3.jpg';
 import mineImg from '@img/img44.jpg';
 import mineActiveImg from '@img/img4.jpg';
 
+
+const mapStateToProps=(state)=>{
+    return {
+        selectedTab:state.homeReducer.selectedTab
+    }
+}
+
+const mapDispatchToProps=(dispatch)=>{
+    return {
+        changeTab(tab){
+            dispatch(changeTabData(tab))
+        }
+    }
+}
+
+@connect(mapStateToProps,mapDispatchToProps)
 class Home extends Component {
     state = { 
-        selectedTab: 'cook',
+        // selectedTab: this.props.selectedTab,
         hidden: false,
         fullScreen: true,
      }
     render() {
+        // console.log(this.props);
         return (
             <>
                 <div style={this.state.fullScreen ? { position: 'fixed', height: '100%', width: '100%', top: 0 } : { height: 400 }}>
@@ -45,11 +64,13 @@ class Home extends Component {
                         background: `url(${cookActiveImg}) center center /  28px 28px no-repeat` }}
                         />
                         }
-                        selected={this.state.selectedTab === 'cook'}
+                        selected={this.props.selectedTab === 'cook'}
                         onPress={() => {
-                        this.setState({
-                            selectedTab: 'cook',
-                        });
+                        // this.setState({
+                        //     selectedTab: 'cook',
+                        // });
+                        this.props.changeTab('cook')
+                        sessionStorage.setItem('tab','cook')
                         }}
                         data-seed="logId"
                     >
@@ -72,11 +93,13 @@ class Home extends Component {
                         />
                         }
                         key="Koubei"
-                        selected={this.state.selectedTab === 'share'}
+                        selected={this.props.selectedTab === 'share'}
                         onPress={() => {
-                        this.setState({
-                            selectedTab: 'share',
-                        });
+                        // this.setState({
+                        //     selectedTab: 'share',
+                        // });
+                        this.props.changeTab('share')
+                        sessionStorage.setItem('tab','share')
                         }}
                         data-seed="logId1"
                     >
@@ -99,11 +122,13 @@ class Home extends Component {
                         />
                         }
                         key="Friend"
-                        selected={this.state.selectedTab === 'message'}
+                        selected={this.props.selectedTab === 'message'}
                         onPress={() => {
-                        this.setState({
-                            selectedTab: 'message',
-                        });
+                        // this.setState({
+                        //     selectedTab: 'message',
+                        // });
+                        this.props.changeTab('message')
+                        sessionStorage.setItem('tab','message')
                         }}
                     >
                         {/* {this.renderContent('Friend')} */}
@@ -113,11 +138,13 @@ class Home extends Component {
                         icon={{ uri: mineImg }}
                         selectedIcon={{ uri: mineActiveImg}}
                         key="my"
-                        selected={this.state.selectedTab === 'mine'}
+                        selected={this.props.selectedTab === 'mine'}
                         onPress={() => {
-                        this.setState({
-                            selectedTab: 'mine',
-                        });
+                        // this.setState({
+                        //     selectedTab: 'mine',
+                        // });
+                        this.props.changeTab('mine')
+                        sessionStorage.setItem('tab','mine')
                         }}
                     >
                         {/* {this.renderContent('My')} */}

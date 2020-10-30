@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import {DivRecommed} from './StyledComponents';
 import memoize from 'memoize-one';
+import {withRouter} from 'react-router-dom';
 
+@withRouter
 class recommed extends Component {
   state = { 
     type:1
@@ -19,6 +21,9 @@ class recommed extends Component {
       type:num
     })
   }
+  toDetail=(id,title)=>()=>{
+    this.props.history.push('/detail/'+id,{title:title})
+}
   render() {
     // console.log(this.props);
     const filterList=this.filter(this.props.recommendList,this.state.type)
@@ -34,7 +39,7 @@ class recommed extends Component {
             {
               filterList.map((item)=>{
                   return (
-                    <div key={item.id}>
+                    <div key={item.id} onClick={this.toDetail(item.id,item.title)}>
                         <img src={this.props.recommendUrlPrefix+item.url} alt=""/>
                         <p>{item.title}</p>
                     </div>

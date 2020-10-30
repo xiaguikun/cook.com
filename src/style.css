@@ -1,0 +1,30 @@
+.my-node-enter{
+    transform: translateX(-100%);
+}
+.my-node-enter-active{
+    transform:translateX(0);
+    transition: all 0.6s;
+}
+.my-node-exit{
+    transform: translateX(0);
+}
+.my-node-exit-active{
+    transform:translateX(100%);
+    transition: 0.6s;
+}
+
+
+/* .my-node-enter {
+    opacity: 0;
+  }
+  .my-node-enter-active {
+    opacity: 1;
+    transition: opacity 200ms;
+  }
+  .my-node-exit {
+    opacity: 1;
+  }
+  .my-node-exit-active {
+    opacity: 0;
+    transition: opacity 200ms;
+  } */

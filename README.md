@@ -22,5 +22,10 @@
         封装 写一个border函数，接收一个参数(组价)，const newComp=styled(Comp)``  return newComp   暴露出border函数
         引用时  引入border  const Item=border(styled.div``)
 
+### 路由
+####    路由信息
+        在用<Route>引用时如果没用用component引用的时候，在组件的props中拿不到路由信息，此时可以用Hooks，和withRoute这个高阶组件包裹一下
+        history.push()方法可以接受两个参数，第一个是地址，第二个是一个对象，可以传数据而且地址中不显示，可以在location.state中得到
+        路由后退是history.goBack()
 
 
