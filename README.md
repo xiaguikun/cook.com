@@ -21,7 +21,8 @@
 
 ### prop-types
     1. 安装 prop-types 
-    2. 在需要判断的组件中(检测的是父组件传下来的props中的数据)，引入{string,array} from 'prop-types' 在下面组件名.propTypes={数据1：string}
+    2. 在需要判断的组件中(检测的是父组件传下来的props中的数据)，引入{string,array} from 'prop-types'
+     在下面组件名.propTypes={数据1：string}
 
 
 ### 1px边框解决方案
@@ -44,6 +45,7 @@
         2.用<Link to={{pathname:'/home2',search:'?name=zhangsna&age=22',hash:'#then-hash', state:{id:20}}}><Link> to属性加对象 (用hooks中的useLocation)  to属性既可以接收字符串也可以接收对象
 
         3.search传值，接收的时候可以考虑URLSerachParams,使用URLSearchParams时search=new URLSearchParams(location.search)，然后通过实例化后的里面的get方法得到对应的值，search.get('id')
-    react-router-dom 中提供了useHistory  useLocation  useParams  useRouteMatch这些Hooks可以用
+
+        react-router-dom 中提供了useHistory  useLocation  useParams  useRouteMatch这些Hooks可以用
 
 
