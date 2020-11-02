@@ -1,6 +1,7 @@
 import {
-    COOKS_GET_BANNER_DATA,
-    COOKS_GET_MENU_DATA
+    // COOKS_GET_BANNER_DATA,
+    // COOKS_GET_MENU_DATA
+    COOKS_GET_ALL
 } from './actionTypes';
 
 const defaultState={
@@ -9,32 +10,38 @@ const defaultState={
     menuList:[],
     menuPrefix:'',
     recommendList:[],
-    recommendUrlPrefix:''
+    recommendPrefix:''
 }
 
 const reducer=(state=defaultState,action)=>{
     action =action || {type:''};
     switch(action.type){
-        case COOKS_GET_BANNER_DATA:
-            // console.log(action);
+        case COOKS_GET_ALL:
+            Reflect.deleteProperty(action,'type');
             return {
                 ...state,
-                bannerList:action.bannerList,
-                bannerPrefix:action.bannerPrefix
+                ...action
             }
-        case COOKS_GET_MENU_DATA:
-            // console.log(action);
-            return {
-                ...state,
-                menuList:action.menuList,
-                menuPrefix:action.menuPrefix
-            }
-        case 'getRecommendData':
-            return {
-                ...state,
-                recommendList:action.recommendList,
-                recommendUrlPrefix:action.recommendUrlPrefix
-            }
+        // case COOKS_GET_BANNER_DATA:
+        //     // console.log(action);
+        //     return {
+        //         ...state,
+        //         bannerList:action.bannerList,
+        //         bannerPrefix:action.bannerPrefix
+        //     }
+        // case COOKS_GET_MENU_DATA:
+        //     // console.log(action);
+        //     return {
+        //         ...state,
+        //         menuList:action.menuList,
+        //         menuPrefix:action.menuPrefix
+        //     }
+        // case 'getRecommendData':
+        //     return {
+        //         ...state,
+        //         recommendList:action.recommendList,
+        //         recommendUrlPrefix:action.recommendUrlPrefix
+        //     }
         default:
             return state;
     }
