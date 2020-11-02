@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React ,{useState} from 'react';
 
-import {connect} from 'react-redux';
+import {useDispatch,useSelector} from 'react-redux';
 import {Cook} from './cook/index';
 import {Message} from './message/index';
 
@@ -17,37 +17,45 @@ import mineImg from '@img/img44.jpg';
 import mineActiveImg from '@img/img4.jpg';
 
 
-const mapStateToProps=(state)=>{
-    return {
-        selectedTab:state.homeReducer.selectedTab
-    }
-}
+// const mapStateToProps=(state)=>{
 
-const mapDispatchToProps=(dispatch)=>{
-    return {
-        changeTab(tab){
-            dispatch(changeTabData(tab))
-        }
-    }
-}
+//     return {
+//         selectedTab:state.homeReducer.selectedTab
+//     }
+// }
 
-@connect(mapStateToProps,mapDispatchToProps)
-class Home extends Component {
-    state = { 
-        // selectedTab: this.props.selectedTab,
-        hidden: false,
-        fullScreen: true,
-     }
-    render() {
+// const mapDispatchToProps=(dispatch)=>{
+//     return {
+//         changeTab(tab){
+//             dispatch(changeTabData(tab))
+//         }
+//     }
+// }
+
+const Home=()=> {
+    // state = { 
+    //     hidden: false,
+    //     fullScreen: true,
+    //  }
         // console.log(this.props);
+
+        const [state] = useState({
+            hidden: false,
+            fullScreen: true,
+        })
+        // console.log(state);
+        const dispatch=useDispatch();
+        const store=useSelector(state=>state);
+        // console.log(store);
+        
         return (
             <>
-                <div style={this.state.fullScreen ? { position: 'fixed', height: '100%', width: '100%', top: 0 } : { height: 400 }}>
+                <div style={state.fullScreen ? { position: 'fixed', height: '100%', width: '100%', top: 0 } : { height: 400 }}>
                     <TabBar
                     unselectedTintColor="#949494"
                     tintColor="#33A3F4"
                     barTintColor="white"
-                    hidden={this.state.hidden}
+                    hidden={state.hidden}
                     tabBarPosition='bottom'
                     >
                     <TabBar.Item
@@ -64,12 +72,13 @@ class Home extends Component {
                         background: `url(${cookActiveImg}) center center /  28px 28px no-repeat` }}
                         />
                         }
-                        selected={this.props.selectedTab === 'cook'}
+                        selected={store.homeReducer.selectedTab === 'cook'}
                         onPress={() => {
                         // this.setState({
                         //     selectedTab: 'cook',
                         // });
-                        this.props.changeTab('cook')
+                        // this.props.changeTab('cook')
+                        dispatch(changeTabData('cook'));
                         sessionStorage.setItem('tab','cook')
                         }}
                         data-seed="logId"
@@ -93,12 +102,13 @@ class Home extends Component {
                         />
                         }
                         key="Koubei"
-                        selected={this.props.selectedTab === 'share'}
+                        selected={store.homeReducer.selectedTab === 'share'}
                         onPress={() => {
                         // this.setState({
                         //     selectedTab: 'share',
                         // });
-                        this.props.changeTab('share')
+                        // this.props.changeTab('share')
+                        dispatch(changeTabData('share'));
                         sessionStorage.setItem('tab','share')
                         }}
                         data-seed="logId1"
@@ -122,12 +132,13 @@ class Home extends Component {
                         />
                         }
                         key="Friend"
-                        selected={this.props.selectedTab === 'message'}
+                        selected={store.homeReducer.selectedTab === 'message'}
                         onPress={() => {
                         // this.setState({
                         //     selectedTab: 'message',
                         // });
-                        this.props.changeTab('message')
+                        // this.props.changeTab('message')
+                        dispatch(changeTabData('message'));
                         sessionStorage.setItem('tab','message')
                         }}
                     >
@@ -138,12 +149,13 @@ class Home extends Component {
                         icon={{ uri: mineImg }}
                         selectedIcon={{ uri: mineActiveImg}}
                         key="my"
-                        selected={this.props.selectedTab === 'mine'}
+                        selected={store.homeReducer.selectedTab === 'mine'}
                         onPress={() => {
                         // this.setState({
                         //     selectedTab: 'mine',
                         // });
-                        this.props.changeTab('mine')
+                        // this.props.changeTab('mine')
+                        dispatch(changeTabData('mine'));
                         sessionStorage.setItem('tab','mine')
                         }}
                     >
@@ -155,6 +167,5 @@ class Home extends Component {
             </>
         );
     }
-}
 
 export default Home;

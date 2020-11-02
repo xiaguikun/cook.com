@@ -1,15 +1,34 @@
 import React, { Component } from 'react';
+// import React from 'react';
 
 import {withRouter} from 'react-router-dom';
-import { Route,Switch,Redirect} from 'react-router-dom';
-import {CSSTransition,TransitionGroup} from 'react-transition-group'
+// import { Route,Redirect} from 'react-router-dom';
+
+import { Route,Redirect,Switch} from 'react-router-dom';
+import {CSSTransition,TransitionGroup} from 'react-transition-group';
+
 
 
 import Home from '@/home/Home.jsx'
 import {Detail} from '@/detail/index.js';
 
-import './style.css';
 import 'animate.css';
+import './style.css';
+
+
+// const App =withRouter((props)=>{
+//     return (
+//             <>             
+//                 <Redirect from="/" to="/home" exact></Redirect>
+//                 <Route path="/home" children={(props) => <Home {...props}></Home>}></Route>
+//                 <Route path="/detail/:id" children={(props) => <Detail {...props}></Detail>}></Route>
+               
+//             </>
+//     )
+// })
+
+// export default App;
+
 
 @withRouter
 class App extends Component {
@@ -17,33 +36,34 @@ class App extends Component {
     render() {
         // console.log(this.props);
         return (
-            <> 
-            <TransitionGroup>
-                <CSSTransition
-                    timeout={600} 
+            <>          
+                <TransitionGroup>
+                    <Redirect from='/' to='/home' exact></Redirect>
+                    <Route path='/home' children={(props)=><Home {...props}></Home>}></Route>     
+                    <CSSTransition
+                    timeout={400}
                     key={this.props.location.pathname}
-                    classNames={'my-node'}
+                    classNames='my-node'
                     // classNames={{
                     //     enter: 'animate__animated',
-                    //     enterActive: 'animate__backOutDown',
+                    //     enterActive: 'animate__bounceInRight',
                     //     exit: 'animate__animated',
-                    //     exitActive: 'animate__backOutDown'
-                    //   }}
-                        >
-                    <Switch location={this.props.location}>
-                        <Redirect from='/' to='/home' exact></Redirect>
-                        <Route path='/home'>
-                            <Home></Home>
-                        </Route>
-                        <Route path='/detail/:id'>
+                    //     exitActive: 'animate__bounceOutRight'
+                    // }}
+                    >
+                        <Switch location={this.props.location}>                            
+                            <Route path='/detail/:id'>
                                 <Detail></Detail>
-                        </Route>
-                    </Switch>
-                </CSSTransition>
-            </TransitionGroup>
+                            </Route>
+                        </Switch>
+                    </CSSTransition>
+                </TransitionGroup>        
+
+
             </>
         );
     }
 }
 
 export default App;
+

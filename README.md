@@ -48,4 +48,13 @@
 
         react-router-dom 中提供了useHistory  useLocation  useParams  useRouteMatch这些Hooks可以用
 
+### Hooks
+    react-redux中解构出两个useDispatch,useSelector两个Hook
+        useDispatch  可以代替mapDispatchToProps  const dispatch=useDispatch();之后就可以直接用dispatch
+        useSelector  const store=useSelector(state=>state)  之后store就是redux的state了，可以直接使用了，如果有redux模块化，再点操作符
+    
+    react-router-dom中解构出 useLoaction  useRouteMatch  useParams  useHistory
+
+    react中解构出 useState useEffect useContext
+
 
